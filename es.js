@@ -4,47 +4,50 @@ latitudine,longitudine,kg_carburante,quanti km*kg.
 Inoltre c'è una lista di areoporti con longitudine e altitudine,
 quali aerei riescono a raggiungere tuttti gli areoporti?*/
 
-function Aereo(latitudine, longitudine, kg_carburante, km_kg){//notazione a costruttore
-  this.latitudine=latitudine;
-  this.longitudine=longitudine;
+//creazione di più oggetti notazione a costruttore//
+function Aereo(nome, lat, long, kg_carburante, km_kg){
+  this.nome=nome;
+  this.lat=lat;
+  this.long=long;
   this.kg_carburante=kg_carburante;
   this.km_kg=km_kg;
-  this.distanza = function(){
+  this.durata = function(){
     return this.kg_carburante * this.km_kg;
   }
+  distanza=this.durata()
 }
+
+
+
+function Aeroporto(nome, lat, long){
+  this.nome=nome;
+  this.lat=lat;
+  this.long=long;
+}
+
 
 //creo oggetto sfruttando la funzione della notazione a costruttore
-var aereo1 = new Aereo('27.349', '10.113', '100', '10');
-var aereo2 = new Aereo('33.234', '17.998', '200', '11');
-var aereo3 = new Aereo('48.221', '31.654', '150', '15');
+var aereo1 = new Aereo('a', 27.349, 10.113, 100, 10);
+var aereo2 = new Aereo('b', 33.234, 17.998, 200, 11);
+var aereo3 = new Aereo('c', 48.221, 31.654, 150, 15);
 
-function Aeroporto(latitudine, longitudine){
-  this.latitudine=latitudine;
-  this.longitudine=longitudine;
+var aeroporto1 = new Aeroporto('x', 10.000, 5.787);
+var aeroporto2 = new Aeroporto('y', 22.887, 20.111);
+var aeroporto3 = new Aeroporto('z', 66.223, 39.687);
+
+var aerei =[aereo1, aereo2, aereo3];
+var aeroporti =[aeroporto1, aeroporto2, aeroporto3];
+
+for (var i = 0; i < aerei.length; i++){
+  var km = aerei[i].durata()
+  console.log(aerei[i].nome + ' può percorrere ' + km + ' km')
 }
 
-var aeroporto1 = new Aeroporto('10.000', '5.787');
-var aeroporto2 = new Areoporto('22.887', '20.111');
-var aeroporto3 = new Areoporto('66.223', '39.687');
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//funzioni//
 
 function DistanceInKm(lat1,lon1,lat2,lon2) {
   var R = 6371; // Radius of the earth in km
